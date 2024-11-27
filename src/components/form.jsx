@@ -69,7 +69,7 @@ export const Form = ({}) => {
       );
       setIsValid(isComplete && userKey.trim() !== "");
     };
-  
+
     validateForm();
   }, [answers, userKey]);
 
@@ -81,8 +81,9 @@ export const Form = ({}) => {
 
     const payload = {
       userKey,
-      answers
+      answers,
     };
+
 
     try {
       const response = await fetch(
@@ -101,19 +102,39 @@ export const Form = ({}) => {
 
       // Check for both statusCode and HTTP status
       if (!response.ok || (data.statusCode && data.statusCode !== 200)) {
-        throw new Error(data.body ? JSON.parse(data.body).message : data.message || "Something went wrong");
+        throw new Error(
+          data.body
+            ? JSON.parse(data.body).message
+            : data.message || "Something went wrong"
+        );
       }
 
       setModalStatus("success");
       setModalOpen(true);
     } catch (err) {
       setError(err.message);
-      console.error('Submit error:', err);
+      console.error("Submit error:", err);
       setModalStatus("error");
       setModalOpen(true);
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const getTraitKey = (trait) => {
+    // Convert to lowercase first
+    const lower = trait.toLowerCase();
+    
+    // Remove diacritics
+    const noDiacritics = lower.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    
+    // Replace (a) with _a
+    const withUnderscore = noDiacritics.replace(/\(a\)/, "_a");
+    
+    // Replace spaces with underscore and trim
+    const final = withUnderscore.trim().replace(/\s+/g, "_");
+    
+    return final;
   };
 
   return (
@@ -165,22 +186,17 @@ export const Form = ({}) => {
               {question.traits.map((trait) => (
                 <TableRow key={trait}>
                   <TableCell>
-                    {t(
-                      `traits.${trait
-                        .toLowerCase()
-                        .replace(/[()]/g, "")
-                        .replace(/\s/g, "_")}`
-                    )}
+                  {t(`traits.${getTraitKey(trait)}`)}
                   </TableCell>
                   <TableCell align="center">
                     <Checkbox
-                      checked={answers[question.id]?.most === trait}
+                      checked={answers[question.id]?.most === trait} // Keep original trait value
                       onChange={() => handleChange(question.id, trait, "most")}
                     />
                   </TableCell>
                   <TableCell align="center">
                     <Checkbox
-                      checked={answers[question.id]?.least === trait}
+                      checked={answers[question.id]?.least === trait} // Keep original trait value
                       onChange={() => handleChange(question.id, trait, "least")}
                     />
                   </TableCell>

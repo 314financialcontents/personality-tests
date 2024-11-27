@@ -1,0 +1,15 @@
+{
+  "instruction": "",
+  "instructionText": "",
+  "userKey": "",
+  "most": "",
+  "least": "",
+  "traits.${trait\n                        .toLowerCase()\n                        .replace(/[()]/g, \"\")\n                        .replace(/\\s/g, \"_\")}": "",
+  "successTitle": "",
+  "errorTitle": "",
+  "successMessage": "",
+  "errorMessage": "",
+  "close": "",
+  "submit": "",
+  "title": "Hola"
+}

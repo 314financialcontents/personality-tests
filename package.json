@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "i18n:extract": "i18n-scanner"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.13.5",
