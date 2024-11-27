@@ -1,0 +1,24 @@
+{
+  "title": "Cuestionario",
+  "instruction": "Instrucción",
+  "instructionText": "Elija un MOST y un LEAST en cada uno de los 28 grupos de palabras.",
+  "userKey": "Clave de Usuario",
+  "most": "Más",
+  "least": "Menos",
+  "submit": "Enviar",
+  "completeAllWarning": "Por favor complete todas las preguntas y proporcione una clave de usuario",
+  "questions": [
+    {
+      "id": 1,
+      "traits": ["Entusiasta", "Audaz", "Diplomático", "Fácil de aplacar"]
+    },
+    {
+      "id": 2,
+      "traits": ["Seguro", "Amable", "Humilde", "Persuasivo"]
+    },
+    {
+      "id": 28,
+      "traits": ["Atrevido", "Servicial", "Leal", "Encantador"]
+    }
+  ]
+}
