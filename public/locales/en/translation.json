@@ -7,7 +7,7 @@
   "least": "Least",
   "submit": "Submit",
   "successTitle": "Success",
-  "suceessMessage": "Form submitted successfully!",
+  "successMessage": "Form submitted successfully!",
   "errorTitle": "Error",
   "errorMessage": "An error occurred while submitting the form. Please try again.",
   "close": "Close",
@@ -113,5 +113,6 @@
     "asertivo_a": "Assertive",
     "seguro_a": "Confident",
     "agresivo_a": "Aggressive"
-  }
+  },
+  "invalidUserKey": "The user key is invalid"
 }

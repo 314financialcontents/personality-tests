@@ -79,11 +79,21 @@ export const Form = ({}) => {
     setIsSubmitting(true);
     setError(null);
 
+    const now = new Date();
+    const submitDateTime = {
+      date: now.toISOString().split('T')[0],
+      time: now.toLocaleTimeString('es-ES', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: false 
+      })
+    };
+
     const payload = {
       userKey,
       answers,
+      submitDateTime,
     };
-
 
     try {
       const response = await fetch(
@@ -100,17 +110,19 @@ export const Form = ({}) => {
 
       const data = await response.json();
 
-      // Check for both statusCode and HTTP status
-      if (!response.ok || (data.statusCode && data.statusCode !== 200)) {
-        throw new Error(
-          data.body
-            ? JSON.parse(data.body).message
-            : data.message || "Something went wrong"
-        );
+      if (response.status === 410) {
+        setModalStatus("success");
+        setModalOpen(true);
+      } else if (!response.ok || (data.statusCode && data.statusCode !== 200)) {
+        let errorMessage = data.message || "Something went wrong";
+        if (errorMessage === "Invalid user key") {
+          errorMessage = t("invalidUserKey");
+        }
+        throw new Error(errorMessage);
+      } else {
+        setModalStatus("success");
+        setModalOpen(true);
       }
-
-      setModalStatus("success");
-      setModalOpen(true);
     } catch (err) {
       setError(err.message);
       console.error("Submit error:", err);
@@ -211,7 +223,7 @@ export const Form = ({}) => {
           {modalStatus === "success" ? t("successTitle") : t("errorTitle")}
         </DialogTitle>
         <DialogContent>
-          {modalStatus === "success" ? t("successMessage") : t("errorMessage")}
+          {modalStatus === "success" ? t("successMessage") : error}
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setModalOpen(false)}>{t("close")}</Button>

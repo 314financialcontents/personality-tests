@@ -7,9 +7,9 @@
   "least": "Menos",
   "submit": "Enviar",
   "successTitle": "Éxito",
-  "suceessMessage": "¡Formulario enviado con éxito!",
+  "successMessage": "¡Formulario enviado con éxito!",
   "errorTitle": "Error",
-  "errorMessage": "Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo.",
+  "errorMessage": "Algo salió mal",
   "close": "Cerrar",
   "traits": {
     "diplomatico_a": "Diplomático(a)",
@@ -113,5 +113,6 @@
     "asertivo_a": "Asertivo(a)",
     "seguro_a": "Seguro(a)",
     "agresivo_a": "Agresivo(a)"
-  }
+  },
+  "invalidUserKey": "La clave de usuario es inválida"
 }
