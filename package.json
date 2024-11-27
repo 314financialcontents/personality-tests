@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "i18n:extract": "i18n-scanner"
   },
   "dependencies": {
     "@emotion/react": "^11.13.5",
@@ -20,7 +20,8 @@
     "i18next-http-backend": "^3.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-i18next": "^15.1.2"
+    "react-i18next": "^15.1.2",
+    "vite-plugin-i18next-scanner": "^0.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
@@ -33,6 +34,8 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "gh-pages": "^6.2.0",
     "globals": "^15.11.0",
+    "i18n-scanner": "^0.1.2",
+    "i18next-scanner": "^4.6.0",
     "vite": "^5.4.10"
   }
 }
