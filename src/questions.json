@@ -1,0 +1,32 @@
+{
+  "questions": [
+    { "id": 1, "traits": ["Diplomático(a)", "Atrevido(a)", "Entusiasta", "Paciente"] },
+    { "id": 2, "traits": ["Encantador(a)", "Predecible", "Introspectivo(a)", "Determinado(a)"] },
+    { "id": 3, "traits": ["Afable", "Enérgico(a)", "Cuidadoso(a)", "Animado(a)"] },
+    { "id": 4, "traits": ["Impaciente", "Observador(a)", "Ecuánime", "Carismático(a)"] },
+    { "id": 5, "traits": ["Impulsivo(a)", "Introvertido(a)", "Amigable", "Fácil de tratar"] },
+    { "id": 6, "traits": ["Estimulante", "Independiente", "Amable", "Perceptivo(a)"] },
+    { "id": 7, "traits": ["Perfeccionista", "Autoritario(a)", "Obediente", "Juguetón(a)"] },
+    { "id": 8, "traits": ["Leal", "Encantador(a)", "Lógico(a)", "Audaz"] },
+    { "id": 9, "traits": ["Extrovertido(a)", "Aventurero(a)", "Moderado(a)", "Perspicaz"] },
+    { "id": 10, "traits": ["Servicial", "Respetuoso(a)", "Pionero(a)", "Optimista"] },
+    { "id": 11, "traits": ["Bondadoso(a)", "Decidido(a)", "Convincente", "Cauteloso(a)"] },
+    { "id": 12, "traits": ["Cooperativo(a)", "Alegre", "Argumentativo(a)", "Sistemático(a)"] },
+    { "id": 13, "traits": ["Comunicativo(a)", "Decisivo(a)", "Convencional", "Controlado(a)"] },
+    { "id": 14, "traits": ["Reservado(a)", "Sociable", "Servicial", "De ideas firmes"] },
+    { "id": 15, "traits": ["Analítico(a)", "Conversador(a)", "Paciente", "Autosuficiente"] },
+    { "id": 16, "traits": ["Humilde", "Original", "Persuasivo(a)", "Metódico(a)"] },
+    { "id": 17, "traits": ["Directo(a)", "Tranquilo(a)", "Jovial", "Preciso(a)"] },
+    { "id": 18, "traits": ["Meticuloso(a)", "Tolerante", "Insistente", "Magnético(a)"] },
+    { "id": 19, "traits": ["Vigoroso(a)", "Refinado(a)", "Indulgente", "Buen anfitrión(a)"] },
+    { "id": 20, "traits": ["Detallista", "Vivaz", "Proactivo(a)", "Dispuesto(a)"] },
+    { "id": 21, "traits": ["Animado(a)", "Persistente", "Disciplinado(a)", "Generoso(a)"] },
+    { "id": 22, "traits": ["Expresivo(a)", "Concienzudo(a)", "Receptivo(a)", "Dominante"] },
+    { "id": 23, "traits": ["Considerado(a)", "Competitivo(a)", "Reservado(a)", "Alegre"] },
+    { "id": 24, "traits": ["Amistoso(a)", "Exacto(a)", "Franco(a)", "Calmado(a)"] },
+    { "id": 25, "traits": ["Cautivador(a)", "Preciso(a)", "Ambicioso(a)", "Contento(a)"] },
+    { "id": 26, "traits": ["Valiente", "Cauteloso(a)", "Sumiso(a)", "Inspirador(a)"] },
+    { "id": 27, "traits": ["Simpático(a)", "Imparcial", "Asertivo(a)", "Seguro(a)"] },
+    { "id": 28, "traits": ["Amable", "Agresivo(a)", "Extrovertido(a)", "Cauteloso(a)"] }
+  ]
+}

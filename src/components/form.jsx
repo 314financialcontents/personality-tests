@@ -20,25 +20,18 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
+import questionsData from "../questions.json";
 
-export const Form = ({ language, translations }) => {
+export const Form = ({}) => {
   const [answers, setAnswers] = useState({});
   const [userKey, setUserKey] = useState("");
-  const [questions, setQuestions] = useState([]);
   const [isValid, setIsValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalStatus, setModalStatus] = useState("");
-
-  useEffect(() => {
-    const loadQuestions = async () => {
-      const questionsModule = await import(`../lang/${language}.json`);
-      setQuestions(questionsModule.default.questions);
-    };
-
-    loadQuestions();
-  }, [language]);
+  const { t } = useTranslation();
 
   const handleChange = (questionId, trait, type) => {
     setAnswers((prev) => {
@@ -71,21 +64,25 @@ export const Form = ({ language, translations }) => {
 
   useEffect(() => {
     const validateForm = () => {
-      // Check if all questions have both most and least answers
-      const isComplete = questions.every(
+      const isComplete = questionsData.questions.every(
         (question) => answers[question.id]?.most && answers[question.id]?.least
       );
       setIsValid(isComplete && userKey.trim() !== "");
     };
-
+  
     validateForm();
-  }, [answers, questions, userKey]);
+  }, [answers, userKey]);
 
   const handleSubmit = async () => {
     if (!isValid) return;
 
     setIsSubmitting(true);
     setError(null);
+
+    const payload = {
+      userKey,
+      answers
+    };
 
     try {
       const response = await fetch(
@@ -96,21 +93,22 @@ export const Form = ({ language, translations }) => {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: JSON.stringify({
-            userKey,
-            answers,
-          }),
+          body: JSON.stringify(payload),
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Server error");
+      const data = await response.json();
+
+      // Check for both statusCode and HTTP status
+      if (!response.ok || (data.statusCode && data.statusCode !== 200)) {
+        throw new Error(data.body ? JSON.parse(data.body).message : data.message || "Something went wrong");
       }
 
       setModalStatus("success");
       setModalOpen(true);
     } catch (err) {
       setError(err.message);
+      console.error('Submit error:', err);
       setModalStatus("error");
       setModalOpen(true);
     } finally {
@@ -127,14 +125,13 @@ export const Form = ({ language, translations }) => {
       )}
       <Alert severity="info" sx={{ mb: 6, mt: 4 }}>
         <Typography variant="h6" component="div" gutterBottom>
-          {translations.instruction || "Instruction"}
+          {t("instruction")}
         </Typography>
-        {translations.instructionText ||
-          "Choose one MOST and one LEAST in each of the 28 groups of words."}
+        {t("instructionText")}
       </Alert>
       <TextField
         fullWidth
-        label={translations.userKey || "User Key"}
+        label={t("userKey")}
         variant="outlined"
         value={userKey}
         onChange={(e) => setUserKey(e.target.value)}
@@ -142,60 +139,50 @@ export const Form = ({ language, translations }) => {
         required
       />
       <TableContainer component={Paper}>
-        {questions.map((question, questionIndex) => (
+        {questionsData.questions.map((question, questionIndex) => (
           <Table
             key={question.id}
             sx={{
               mb: 2,
               backgroundColor:
                 questionIndex % 2 === 0 ? "background.paper" : "action.hover",
-              "& .MuiTableCell-root": {
-                padding: "8px",
-              },
-              "& .MuiTableCell-head": {
-                fontWeight: "bold",
-              },
+              "& .MuiTableCell-root": { padding: "8px" },
+              "& .MuiTableCell-head": { fontWeight: "bold" },
             }}
           >
             <TableHead>
               <TableRow>
                 <TableCell sx={{ width: "60%" }}>{question.id}</TableCell>
                 <TableCell align="center" sx={{ width: "20%" }}>
-                  {translations.most || "Most"}
+                  {t("most")}
                 </TableCell>
                 <TableCell align="center" sx={{ width: "20%" }}>
-                  {translations.least || "Least"}
+                  {t("least")}
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {question.traits.map((trait) => (
-                <TableRow
-                  key={trait}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row" sx={{ width: "60%" }}>
-                    {trait}
+                <TableRow key={trait}>
+                  <TableCell>
+                    {t(
+                      `traits.${trait
+                        .toLowerCase()
+                        .replace(/[()]/g, "")
+                        .replace(/\s/g, "_")}`
+                    )}
                   </TableCell>
-                  <TableCell align="center" sx={{ width: "20%" }}>
-                    <Box display="flex" justifyContent="center">
-                      <Checkbox
-                        checked={answers[question.id]?.most === trait}
-                        onChange={() =>
-                          handleChange(question.id, trait, "most")
-                        }
-                      />
-                    </Box>
+                  <TableCell align="center">
+                    <Checkbox
+                      checked={answers[question.id]?.most === trait}
+                      onChange={() => handleChange(question.id, trait, "most")}
+                    />
                   </TableCell>
-                  <TableCell align="center" sx={{ width: "20%" }}>
-                    <Box display="flex" justifyContent="center">
-                      <Checkbox
-                        checked={answers[question.id]?.least === trait}
-                        onChange={() =>
-                          handleChange(question.id, trait, "least")
-                        }
-                      />
-                    </Box>
+                  <TableCell align="center">
+                    <Checkbox
+                      checked={answers[question.id]?.least === trait}
+                      onChange={() => handleChange(question.id, trait, "least")}
+                    />
                   </TableCell>
                 </TableRow>
               ))}
@@ -205,20 +192,13 @@ export const Form = ({ language, translations }) => {
       </TableContainer>
       <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
         <DialogTitle>
-          {modalStatus === "success"
-            ? translations.successTitle || "Success!"
-            : translations.errorTitle || "Error"}
+          {modalStatus === "success" ? t("successTitle") : t("errorTitle")}
         </DialogTitle>
         <DialogContent>
-          {modalStatus === "success"
-            ? translations.successMessage || "Form submitted successfully!"
-            : translations.errorMessage ||
-              "An error occurred. Please try again later."}
+          {modalStatus === "success" ? t("successMessage") : t("errorMessage")}
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setModalOpen(false)}>
-            {translations.close || "Close"}
-          </Button>
+          <Button onClick={() => setModalOpen(false)}>{t("close")}</Button>
         </DialogActions>
       </Dialog>
       <Box sx={{ display: "flex", justifyContent: "center", mt: 4, mb: 8 }}>
@@ -232,7 +212,7 @@ export const Form = ({ language, translations }) => {
           {isSubmitting ? (
             <CircularProgress size={24} color="inherit" />
           ) : (
-            translations.submit || "Submit"
+            t("submit")
           )}
         </Button>
       </Box>

@@ -1,0 +1,14 @@
+{
+  "title": "Cuestionario",
+  "instruction": "Instrucción",
+  "instructionText": "Elija un MOST y un LEAST en cada uno de los 28 grupos de palabras.",
+  "userKey": "Clave de Usuario",
+  "most": "Más",
+  "least": "Menos",
+  "submit": "Enviar",
+  "successTitle": "Éxito",
+  "suceessMessage": "¡Formulario enviado con éxito!",
+  "errorTitle": "Error",
+  "errorMessage": "Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo.",
+  "close": "Cerrar"
+}

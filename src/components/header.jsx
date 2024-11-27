@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@mui/material';
-import TranslateIcon from '@mui/icons-material/Translate';
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Menu,
+  MenuItem,
+} from "@mui/material";
+import TranslateIcon from "@mui/icons-material/Translate";
+import { useTranslation } from "react-i18next";
 
-export const Header = ({language, setLanguage, translations}) => {
-    const [anchorEl, setAnchorEl] = useState(null);
+export const Header = ({}) => {
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const { t, i18n } = useTranslation();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -14,24 +23,23 @@ export const Header = ({language, setLanguage, translations}) => {
     setAnchorEl(null);
   };
 
-  const handleLanguageChange = (lang) => {
-    setLanguage(lang);
-    handleClose();
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambiar idioma dinámicamente
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'black' }}>
-      <Toolbar sx={{ justifyContent: 'space-between' }}>
+    <AppBar position="static" sx={{ backgroundColor: "black" }}>
+      <Toolbar sx={{ justifyContent: "space-between" }}>
         <Typography variant="h6" component="div">
-          {translations.title || 'Test'}
+        {t('title')}
         </Typography>
         <div>
           <IconButton
             onClick={handleClick}
-            sx={{ color: 'white' }}
-            aria-controls={open ? 'language-menu' : undefined}
+            sx={{ color: "white" }}
+            aria-controls={open ? "language-menu" : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
+            aria-expanded={open ? "true" : undefined}
           >
             <TranslateIcon />
           </IconButton>
@@ -41,11 +49,15 @@ export const Header = ({language, setLanguage, translations}) => {
             open={open}
             onClose={handleClose}
             MenuListProps={{
-              'aria-labelledby': 'language-button',
+              "aria-labelledby": "language-button",
             }}
           >
-            <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
-            <MenuItem onClick={() => handleLanguageChange('es')}>Español</MenuItem>
+            <MenuItem onClick={() => changeLanguage('en')}>
+              English
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage('es')}>
+              Español
+            </MenuItem>
           </Menu>
         </div>
       </Toolbar>

@@ -1,0 +1,15 @@
+{
+    "title": "Test",
+    "instruction": "Instruction",
+    "instructionText": "Choose one MOST and one LEAST in each of the 28 groups of words.",
+    "userKey": "User Key",
+    "most": "Most",
+    "least": "Least",
+    "submit": "Submit",
+    "successTitle": "Success",
+    "suceessMessage": "Form submitted successfully!",
+    "errorTitle": "Error",
+    "errorMessage": "An error occurred while submitting the form. Please try again.",
+    "close": "Close"
+  }
+  
