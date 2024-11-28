@@ -33,7 +33,7 @@ git clone [repository-url]
 ```
 2. Install dependencies:
 ```sh
-npm run dev
+npm install
 ```
 3. Start development server
 ```sh
@@ -44,3 +44,65 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## Environment Setup
+
+### Local Development
+1. Create `.env` file in root directory:
+```sh
+VITE_API_ENDPOINT=your_api_endpoint_here
+```
+2. Add .env to .gitignore:
+```sh
+.env
+.env.local
+```
+
+### GitHub Deployment
+1. Create GitHub Actions workflow:
+```sh
+mkdir -p .github/workflows
+touch .github/workflows/deploy.yml
+```
+2. Set repository secrets:
+I'll add a section about environment setup to the README.
+
+```markdown
+## Environment Setup
+
+### Local Development
+1. Create `.env` file in root directory:
+```sh
+VITE_API_ENDPOINT=your_api_endpoint_here
+```
+
+2. Create `.env.example` for documentation:
+```sh
+VITE_API_ENDPOINT=your_api_endpoint_here
+```
+
+3. Add `.env` to `.gitignore`:
+```
+.env
+.env.local
+```
+
+### GitHub Deployment
+1. Create GitHub Actions workflow:
+```sh
+mkdir -p .github/workflows
+touch .github/workflows/deploy.yml
+```
+
+2. Set repository secrets:
+- Go to repository Settings > Secrets and Variables > Actions
+- Add New Repository Secret:
+  - Name: `VITE_API_ENDPOINT`
+  - Value: Your API endpoint URL
+
+3. Configure GitHub Pages:
+- Go to repository Settings > Pages
+- Set source to "GitHub Actions"
+
+The environment variable will be automatically injected during build process via GitHub Actions.
+
