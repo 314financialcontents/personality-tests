@@ -64,35 +64,6 @@ VITE_API_ENDPOINT=your_api_endpoint_here
 mkdir -p .github/workflows
 touch .github/workflows/deploy.yml
 ```
-2. Set repository secrets:
-I'll add a section about environment setup to the README.
-
-```markdown
-## Environment Setup
-
-### Local Development
-1. Create `.env` file in root directory:
-```sh
-VITE_API_ENDPOINT=your_api_endpoint_here
-```
-
-2. Create `.env.example` for documentation:
-```sh
-VITE_API_ENDPOINT=your_api_endpoint_here
-```
-
-3. Add `.env` to `.gitignore`:
-```
-.env
-.env.local
-```
-
-### GitHub Deployment
-1. Create GitHub Actions workflow:
-```sh
-mkdir -p .github/workflows
-touch .github/workflows/deploy.yml
-```
 
 2. Set repository secrets:
 - Go to repository Settings > Secrets and Variables > Actions
