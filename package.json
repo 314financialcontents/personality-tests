@@ -2,12 +2,15 @@
   "name": "personal-test",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://JairoMS27.github.io/personality-tests/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.13.5",
