@@ -81,12 +81,12 @@ export const Form = ({}) => {
 
     const now = new Date();
     const submitDateTime = {
-      date: now.toISOString().split('T')[0],
-      time: now.toLocaleTimeString('es-ES', { 
-        hour: '2-digit', 
-        minute: '2-digit',
-        hour12: false 
-      })
+      date: now.toISOString().split("T")[0],
+      time: now.toLocaleTimeString("es-ES", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }),
     };
 
     const payload = {
@@ -125,7 +125,6 @@ export const Form = ({}) => {
       }
     } catch (err) {
       setError(err.message);
-      console.error("Submit error:", err);
       setModalStatus("error");
       setModalOpen(true);
     } finally {
@@ -136,26 +135,21 @@ export const Form = ({}) => {
   const getTraitKey = (trait) => {
     // Convert to lowercase first
     const lower = trait.toLowerCase();
-    
+
     // Remove diacritics
     const noDiacritics = lower.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    
+
     // Replace (a) with _a
     const withUnderscore = noDiacritics.replace(/\(a\)/, "_a");
-    
+
     // Replace spaces with underscore and trim
     const final = withUnderscore.trim().replace(/\s+/g, "_");
-    
+
     return final;
   };
 
   return (
     <Container maxWidth="md">
-      {error && (
-        <Alert severity="error" sx={{ mb: 2, mt: 2 }}>
-          {error}
-        </Alert>
-      )}
       <Alert severity="info" sx={{ mb: 6, mt: 4 }}>
         <Typography variant="h6" component="div" gutterBottom>
           {t("instruction")}
@@ -197,9 +191,7 @@ export const Form = ({}) => {
             <TableBody>
               {question.traits.map((trait) => (
                 <TableRow key={trait}>
-                  <TableCell>
-                  {t(`traits.${getTraitKey(trait)}`)}
-                  </TableCell>
+                  <TableCell>{t(`traits.${getTraitKey(trait)}`)}</TableCell>
                   <TableCell align="center">
                     <Checkbox
                       checked={answers[question.id]?.most === trait} // Keep original trait value
