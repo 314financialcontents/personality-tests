@@ -1,8 +1,13 @@
 {
   "title": "Cuestionario",
-  "instruction": "Instrucción",
-  "instructionText": "Elija un Más y un Menos en cada uno de los 28 grupos de palabras.",
+  "instruction": "Instrucciones",
+  "instructionText": "Para cada grupo de palabras, seleccione una opción que le describa MÁS y otra opción que le describa MENOS. Asegúrese de marcar solo una opción en cada columna (Más y Menos) por grupo de palabras.",
+  "example": "Ejemplo",
+  "exampleText": "Si considera que la palabra 'Entusiasta' le representa MÁS, márquela en la columna 'Más'. Si considera que 'Paciente' le representa MENOS, márquela en la columna 'Menos'.",
   "userKey": "Código de Usuario",
+  "invalidUserKey": "El código de usuario es inválida",
+  "userKeyPlaceholder": "Ingrese la clave proporcionada en su correo",
+  "userKeyHelper": "El código  debe tener 6 caracteres. Se distinguen mayúsculas y minúsculas.",
   "most": "Más",
   "least": "Menos",
   "submit": "Enviar",
@@ -11,6 +16,7 @@
   "errorTitle": "Error",
   "errorMessage": "Algo salió mal",
   "close": "Cerrar",
+  "submitHelper": "Antes de enviar el cuestionario, revise que haya seleccionado una opción en ambas columnas ('Más' y 'Menos') para cada grupo de palabras.",
   "traits": {
     "diplomatico_a": "Diplomático(a)",
     "atrevido_a": "Atrevido(a)",
@@ -113,7 +119,5 @@
     "asertivo_a": "Asertivo(a)",
     "seguro_a": "Seguro(a)",
     "agresivo_a": "Agresivo(a)"
-  },
-  "invalidUserKey": "El código de usuario es inválida",
-  "userKeyHelper": "El código  debe tener 6 caracteres. Se distinguen mayúsculas y minúsculas."
+  }
 }

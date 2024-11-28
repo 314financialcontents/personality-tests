@@ -1,8 +1,13 @@
 {
   "title": "Test",
-  "instruction": "Instruction",
-  "instructionText": "Choose one MOST and one LEAST in each of the 28 groups of words.",
+  "instruction": "Instructions",
+  "instructionText": "For each group of words, select one option that describes you MOST and another option that describes you LEAST. Make sure to mark only one option in each column (Most and Least) per group of words.",
+  "example": "Example",
+  "exampleText": "If you consider that the word \"Enthusiastic\" represents you MORE, mark it in the \"More\" column. If you consider that \"Patient\" represents you LESS, mark it in the \"Less\" column.",
+  "invalidUserKey": "The user code is invalid",
+  "userKeyHelper": "The user code must be 6 characters long. Case sensitive.",
   "userKey": "User Code",
+  "userKeyPlaceholder": "Enter the key provided in your email",
   "most": "Most",
   "least": "Least",
   "submit": "Submit",
@@ -11,6 +16,7 @@
   "errorTitle": "Error",
   "errorMessage": "An error occurred while submitting the form. Please try again.",
   "close": "Close",
+  "submitHelper": "Before submitting the questionnaire, check that you have selected an option in both columns ('More' and 'Less') for each group of words.",
   "traits": {
     "diplomatico_a": "Diplomatic",
     "atrevido_a": "Daring",
@@ -113,7 +119,5 @@
     "asertivo_a": "Assertive",
     "seguro_a": "Confident",
     "agresivo_a": "Aggressive"
-  },
-  "invalidUserKey": "The user code is invalid",
-  "userKeyHelper": "The user code must be a 6-digit key and is case-sensitive."
+  }
 }
