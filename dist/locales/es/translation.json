@@ -2,7 +2,7 @@
   "title": "Cuestionario",
   "instruction": "Instrucción",
   "instructionText": "Elija un Más y un Menos en cada uno de los 28 grupos de palabras.",
-  "userKey": "Clave de Usuario",
+  "userKey": "Código de Usuario",
   "most": "Más",
   "least": "Menos",
   "submit": "Enviar",
@@ -114,5 +114,6 @@
     "seguro_a": "Seguro(a)",
     "agresivo_a": "Agresivo(a)"
   },
-  "invalidUserKey": "La clave de usuario es inválida"
+  "invalidUserKey": "El código de usuario es inválida",
+  "userKeyHelper": "El código  debe tener 6 caracteres. Se distinguen mayúsculas y minúsculas."
 }

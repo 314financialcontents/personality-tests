@@ -161,10 +161,28 @@ export const Form = ({}) => {
         label={t("userKey")}
         variant="outlined"
         value={userKey}
-        onChange={(e) => setUserKey(e.target.value)}
+        placeholder={t("userKeyPlaceholder")}
+        onChange={(e) => {
+          // Limit to 6 characters
+          const value = e.target.value.slice(0, 6);
+          setUserKey(value);
+        }}
         sx={{ mb: 4 }}
         required
+        slotProps={{
+          input: {
+            maxLength: 6,
+          },
+        }}
+        helperText={t("userKeyHelper")}
+        error={userKey.length > 0 && userKey.length < 6}
       />
+      <Alert severity="warning" sx={{ mb: 6, mt: 4 }}>
+        <Typography variant="h6" component="div" gutterBottom>
+          {t("example")}
+        </Typography>
+        {t("exampleText")}
+      </Alert>
       <TableContainer component={Paper}>
         {questionsData.questions.map((question, questionIndex) => (
           <Table
@@ -172,7 +190,7 @@ export const Form = ({}) => {
             sx={{
               mb: 2,
               backgroundColor:
-                questionIndex % 2 === 0 ? "background.paper" : "action.hover",
+                questionIndex % 2 === 0 ? "background.paper" : "grey.200",
               "& .MuiTableCell-root": { padding: "8px" },
               "& .MuiTableCell-head": { fontWeight: "bold" },
             }}
@@ -194,13 +212,13 @@ export const Form = ({}) => {
                   <TableCell>{t(`traits.${getTraitKey(trait)}`)}</TableCell>
                   <TableCell align="center">
                     <Checkbox
-                      checked={answers[question.id]?.most === trait} // Keep original trait value
+                      checked={answers[question.id]?.most === trait}
                       onChange={() => handleChange(question.id, trait, "most")}
                     />
                   </TableCell>
                   <TableCell align="center">
                     <Checkbox
-                      checked={answers[question.id]?.least === trait} // Keep original trait value
+                      checked={answers[question.id]?.least === trait}
                       onChange={() => handleChange(question.id, trait, "least")}
                     />
                   </TableCell>
@@ -221,13 +239,22 @@ export const Form = ({}) => {
           <Button onClick={() => setModalOpen(false)}>{t("close")}</Button>
         </DialogActions>
       </Dialog>
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 4, mb: 8 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          mt: 4,
+          mb: 8,
+        }}
+      >
         <Button
           variant="contained"
           color="primary"
           onClick={handleSubmit}
           size="large"
           disabled={!isValid || isSubmitting}
+          sx={{ mb: 2 }} // Add margin bottom to separate from text
         >
           {isSubmitting ? (
             <CircularProgress size={24} color="inherit" />
@@ -235,6 +262,9 @@ export const Form = ({}) => {
             t("submit")
           )}
         </Button>
+        <Typography variant="body2" color="text.secondary">
+          {t("submitHelper")}
+        </Typography>
       </Box>
     </Container>
   );

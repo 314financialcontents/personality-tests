@@ -2,7 +2,7 @@
   "title": "Test",
   "instruction": "Instruction",
   "instructionText": "Choose one MOST and one LEAST in each of the 28 groups of words.",
-  "userKey": "User Key",
+  "userKey": "User Code",
   "most": "Most",
   "least": "Least",
   "submit": "Submit",
@@ -114,5 +114,6 @@
     "seguro_a": "Confident",
     "agresivo_a": "Aggressive"
   },
-  "invalidUserKey": "The user key is invalid"
+  "invalidUserKey": "The user code is invalid",
+  "userKeyHelper": "The user code must be a 6-digit key and is case-sensitive."
 }
