@@ -1,8 +1,46 @@
-# React + Vite
+# Personal Test Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A bilingual (English/Spanish) personality assessment questionnaire built with React and Material-UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 28 question personality assessment
+- Bilingual support (English/Spanish)
+- User authentication via keys
+- Real-time form validation
+- Responsive Material-UI design
+- i18n internationalization
+
+## Technologies
+
+- React 18
+- Material-UI v6
+- i18next
+- Vite
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```sh
+git clone [repository-url]
+```
+2. Install dependencies:
+```sh
+npm run dev
+```
+3. Start development server
+```sh
+npm run dev
+```
+
+## Building for Production
+```sh
+npm run build
+```
