@@ -13,6 +13,9 @@ i18n
     interpolation: {
       escapeValue: false, // React ya se encarga de escapar los valores
     },
+    backend: {
+      loadPath: '/personality-tests/locales/{{lng}}/translation.json'
+  }
   });
 
 export default i18n;

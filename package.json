@@ -2,7 +2,6 @@
   "name": "personal-test",
   "private": true,
   "version": "0.0.0",
-  "base": "https://JairoMS27.github.io/personality-tests/",
   "type": "module",
   "scripts": {
     "dev": "vite",
