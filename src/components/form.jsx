@@ -23,9 +23,9 @@ import {
 import { useTranslation } from "react-i18next";
 import questionsData from "../questions.json";
 
-const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
+const API_ENDPOINT = "https://faas-lon1-917a94a7.doserverless.co/api/v1/web/fn-cac95d08-002e-4c66-ad1b-cf8966a459fe/sample/hello";
 
-export const Form = ({}) => {
+export const Form = () => {
   const [answers, setAnswers] = useState({});
   const [userKey, setUserKey] = useState("");
   const [isValid, setIsValid] = useState(false);
